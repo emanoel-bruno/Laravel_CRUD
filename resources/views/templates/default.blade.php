@@ -11,7 +11,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,600" rel="stylesheet" type="text/css">
+    <link href="https://unpkg.com/ionicons@4.4.2/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('css/style.css')}}" type="text/css">
+    <style>
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.603), rgba(0, 0, 0, 0.603)),
+            url("{{  URL::asset("imgs/hero.jpg")}}  ");
+        }
+    </style>
+    @yield('head')
 </head>
 
 
