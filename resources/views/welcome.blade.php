@@ -14,6 +14,22 @@
         background: url("{{ URL::asset("imgs/laravelo.png" )}}");
         background-size: cover;
     }
+
+    .display-2:link,
+    .display-2:visited {
+        color: #cccccc;
+
+        transition: color 0.5s;
+        -webkit-transition: color 0.5s;
+        -moz-transition: color 0.5s;
+        -ms-transition: color 0.5s;
+        -o-transition: color 0.5s;
+    }
+
+    .display-2:hover,
+    .display-2:active {
+        color: #fb503b;
+    }
 </style>
 @endsection
  
@@ -61,20 +77,27 @@
                     <div class="card-body">
                         <h5 class="card-title h1 text-center mb-3">Join Us</h5>
                         <p class="card-text ">Register now on our community and learn more about Laravel</p>
-                        <div class="input-group mb-4">
+                        <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i class="icon ion-md-person"></i></span>
                             </div>
-                            <input type="text" name="user" class="form-control" required placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="password" name="user" minlength="6" required class="form-control" required placeholder="Username" aria-label="Username"
+                                aria-describedby="basic-addon1">
                         </div>
-                        <div class="input-group mb-4">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="icon ion-md-lock"></i></span>
+                            </div>
+                            <input type="text" name="password" class="form-control" required placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i class="icon ion-md-mail"></i></span>
                             </div>
                             <input type="email" name="email" class=" form-control " placeholder="E-Mail " aria-label="E-Mail
                                         " required aria-describedby="basic-addon1 ">
                         </div>
-                        <div class="input-group mb-4 ">
+                        <div class="input-group mb-3 ">
                             <div class="input-group-prepend ">
                                 <span class="input-group-text " id="basic-addon1 "><i class="icon ion-md-call "></i></span>
                             </div>
@@ -82,7 +105,6 @@
                         </div>
                         <div class="input-group mx-auto  row">
                             <input type="submit" class="btn btn-danger mr-3 d-inline-block mx-auto" value="Create Account">
-
                         </div>
                     </div>
                 </div>
