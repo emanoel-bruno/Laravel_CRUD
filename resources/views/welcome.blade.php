@@ -72,7 +72,7 @@
             </div>
         </div>
         <div class="col-md-4 my-auto">
-            <form action="">
+            <form action="/store" method="post">
                 <div class="card mx-auto bg-light">
                     <div class="card-body">
                         <h5 class="card-title h1 text-center mb-3">Join Us</h5>
@@ -81,14 +81,14 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i class="icon ion-md-person"></i></span>
                             </div>
-                            <input type="password" name="user" minlength="6" required class="form-control" required placeholder="Username" aria-label="Username"
-                                aria-describedby="basic-addon1">
+                            <input type="text" name="name" required class="form-control" required placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i class="icon ion-md-lock"></i></span>
                             </div>
-                            <input type="text" name="password" class="form-control" required placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="password" name="password" minlength="6" class="form-control" required placeholder="Password" aria-label="Username"
+                                aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
