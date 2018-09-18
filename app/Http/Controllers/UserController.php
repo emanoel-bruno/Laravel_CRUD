@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Exception;
 
 class UserController extends Controller
 {
@@ -35,20 +36,31 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $users = User::all();
-        foreach ($users as $user) {
-            if ($user->email == $request->input('email')) {
-                return "alert(Email already registred)";
-            }
+        try {
+
+            $user = new User;
+
+            $user->name = $request->input('name');
+            $user->password = $request->input('password');
+            $user->email = $request->input('email');
+
+            $user->tel = $request->input('tel');
+
+            $user->save();
+
+            $message = ["User Registred !"];
+            $result = true;
+        } catch (Exception $e) {
+            $message = $e->getMessage();
+            $result = false;
         }
 
-        $user = new User;
-        $user->name = $request->input('name');
-        $user->password = $request->input('password');
-        $user->email = $request->input('email');
-        $user->tel = $request->input('tel');
-        $user->save();
+        return redirect()->back()->with("message", $message)->with("result", $result)->withInput($request->all());
+    }
 
+    public function response(array $errors)
+    {
+        return response()->json(['msg' => 'please fill all the field', 'status' => 0]);
     }
 
     /**

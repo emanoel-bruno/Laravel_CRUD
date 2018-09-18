@@ -14,4 +14,20 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         //
     ];
+
+    // public function handle($request, Clousure $next)
+    // {  
+    // //array of routes to skip
+    //     $skip = array(
+    //         '/uploadimage'
+    //     );
+
+    //     foreach ($skip as $key => $route) {
+
+    //         if ($request->is($route)) {
+    //             return parent::addCookieToResponse($request, $next($request));
+    //         }
+    //     }
+    //     return parent::handle($request, $next);
+    // }
 }

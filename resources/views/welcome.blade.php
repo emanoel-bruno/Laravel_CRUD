@@ -72,7 +72,8 @@
             </div>
         </div>
         <div class="col-md-4 my-auto">
-            <form action="/store" method="post">
+            <form action="{{env('APP_URL')}}/users" method="POST">
+                {!! csrf_field() !!}
                 <div class="card mx-auto bg-light">
                     <div class="card-body">
                         <h5 class="card-title h1 text-center mb-3">Join Us</h5>
@@ -81,7 +82,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i class="icon ion-md-person"></i></span>
                             </div>
-                            <input type="text" name="name" required class="form-control" required placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" name="name" required class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -101,7 +102,7 @@
                             <div class="input-group-prepend ">
                                 <span class="input-group-text " id="basic-addon1 "><i class="icon ion-md-call "></i></span>
                             </div>
-                            <input type="tel " name="tel " class="form-control " placeholder="Cellphone" required aria-label="Cellphone " aria-describedby="basic-addon1 ">
+                            <input type="text" name="tel" class="form-control " placeholder="Cellphone" required aria-label="Cellphone " aria-describedby="basic-addon1 ">
                         </div>
                         <div class="input-group mx-auto  row">
                             <input type="submit" class="btn btn-danger mr-3 d-inline-block mx-auto" value="Create Account">
