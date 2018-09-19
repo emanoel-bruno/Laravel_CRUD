@@ -42,7 +42,7 @@
         </a>
 
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
-    <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon"><i class="icon icon-md ion-md-menu"></i></span>
 </button>
 
         <div id="navbarNav" class="collapse navbar-collapse">

@@ -96,13 +96,11 @@ li a:active {
   font-weight: 300;
 }
 
-.navbar-toggler {
-  padding: 0.25rem 0.75rem;
-  font-size: 1.25rem;
-  color: #cccccc;
+.navbar-toggler-icon {
+  color: #ffffff;
+  border: 0;
+}
 
-  line-height: 1;
-  background-color: transparent;
-  border: 0px solid transparent;
-  border-radius: 0.25rem;
+.icon-md {
+  font-size: 2rem;
 }
