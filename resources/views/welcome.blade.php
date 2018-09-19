@@ -36,6 +36,8 @@
 @section('header')
 <nav class="navbar navbar-expand-sm  mb-4">
     <div class="container">
+
+
         <a class="navbar-brand logo" href="https://laravel.com/">
         </a>
 
