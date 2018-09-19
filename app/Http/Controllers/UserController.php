@@ -48,20 +48,19 @@ class UserController extends Controller
 
             $user->save();
 
-            $message = ["User Registred !"];
+            $message = "User Registred !";
             $result = true;
         } catch (Exception $e) {
-            $message = $e->getMessage();
+            $message = "Email already registred";
             $result = false;
         }
+        // return redirect()->back()->with(["message" => $message, "result" => $result]);
 
-        return redirect()->back()->with("message", $message)->with("result", $result)->withInput($request->all());
+        //return redirect()->back()->with("message", $message)->with("result", $result);
+        // return redirect()->back()->compact("message", "result");
+        return view('welcome', compact("message", "result"));
     }
 
-    public function response(array $errors)
-    {
-        return response()->json(['msg' => 'please fill all the field', 'status' => 0]);
-    }
 
     /**
      * Display the specified resource.

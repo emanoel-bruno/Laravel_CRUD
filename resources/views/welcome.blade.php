@@ -52,7 +52,7 @@
                     <a class="nav-link" href="#">List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Tables</a>
+                    <a class="nav-link" href="#">Deleted</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href=" # ">Contact</a>
@@ -65,6 +65,8 @@
  
 @section('body')
 <div class="container">
+
+
     <div class="row fh-100">
         <div class="col-md-8 my-auto">
             <div class="display-2 hero-text text-capitalize">
@@ -73,11 +75,11 @@
         </div>
         <div class="col-md-4 my-auto">
             <div class="card mx-auto bg-light">
-                <form action="{{env('APP_URL')}}/users" method="POST">
-                    {!! csrf_field() !!}
-                    <div class="card-body">
-                        <h5 class="card-title h1 text-center mb-3">Join Us</h5>
-                        <p class="card-text ">Register now on our community and learn more about Laravel</p>
+                <div class="card-body">
+                    <h5 class="card-title h1 text-center mb-3">Join Us</h5>
+                    <p class="card-text ">Register now on our community and learn more about Laravel</p>
+                    <form action="{{env('APP_URL')}}/users" method="POST">
+                        {!! csrf_field() !!}
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i class="icon ion-md-person"></i></span>
@@ -107,9 +109,20 @@
                         <div class="input-group mx-auto  row">
                             <input type="submit" class="btn btn-danger mr-3 d-inline-block mx-auto" value="Create Account">
                         </div>
+                    </form>
+                    @php if(isset($message)){ $class = $result ? 'alert alert-success mt-3 mb-0 text-dark' : 'alert alert-danger mt-3 mb-0 text-dark';
+                    } else{ $message =""; $class ='d-none'; } 
+@endphp
+                    <div class="{{ $class }}" role="alert">
+                        {!! $message !!}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
                     </div>
+
+                </div>
             </div>
-            </form>
+
         </div>
     </div>
 
