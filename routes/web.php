@@ -16,12 +16,20 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('welcome');
+	$UserController = new UserController(); 
+	$users = $UserController->all();
+	$mode = 0;
+	return view('welcome', compact('users','mode'));
 });
 
+Route::put('/{id}/update', function ($id) {
+	$UserController = new UserController(); 
+	$users = $UserController->all();
+	$mode = 1;
+	return view('welcome', compact('users','mode','id'));
+});
 
 
 Route::group(['middleware' => ['web']], function () {
     Route::resource('users', 'UserController');
-
 });

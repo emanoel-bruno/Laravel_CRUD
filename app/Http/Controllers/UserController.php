@@ -93,7 +93,27 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      try {
+
+          $user = User::find($id);
+
+          $user->name = $request->input('name');
+          $user->email = $request->input('email');
+          $user->tel = $request->input('tel');
+
+          $user->save();
+
+          $message = "User Modefied !";
+          $result = true;
+      } catch (Exception $e) {
+          $message = "Please try again.";
+          $result = false;
+      }
+      // return redirect()->back()->with(["message" => $message, "result" => $result]);
+
+      //return redirect()->back()->with("message", $message)->with("result", $result);
+      // return redirect()->back()->compact("message", "result");
+      return view('welcome', compact("message", "result"));
     }
 
     /**
@@ -105,5 +125,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function all()
+    {
+        $users = User::all();
+        return $users;
     }
 }

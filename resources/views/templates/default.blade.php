@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,600" rel="stylesheet" type="text/css">
     <link href="https://unpkg.com/ionicons@4.4.2/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('css/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/media.css')}}" type="text/css">
     <style>
         body {
             background: linear-gradient(rgba(0, 0, 0, 0.603), rgba(0, 0, 0, 0.603)),
