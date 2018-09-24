@@ -142,6 +142,11 @@ input {
   margin-right: auto;
 }
 
-.normalize-input{
-  min-height: 10.25rem;
+.active-pink-2 input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #fb503b;
+    box-shadow: 0 1px 0 0 #fb503b;
+}
+
+ve-pink .fa, .active-pink-2 .fa {
+    color: #fb503b;
 }

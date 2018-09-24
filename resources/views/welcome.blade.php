@@ -60,7 +60,6 @@
 @endsection
 
 @section('body')
-
 <section class="create-section">
     <div class="container">
         <div class="row ">
@@ -107,13 +106,15 @@
                             </div>
                         </form>
                         @php
-                            if(isset($message))
+                            if(isset($message) and $mode==0)
                             {
                                 $class = $result ? 'alert alert-success mt-3 mb-0 text-dark' : 'alert alert-danger mt-3 mb-0 text-dark';
                             }
                             else
                             {
-                                $message ="";
+                                if(!isset($message)){
+                                  $message ="";
+                                }
                                 $class ='d-none';
                             }
                         @endphp
@@ -130,9 +131,24 @@
         </div>
     </div>
 </section>
+
 <section class="list-section" id="all">
     <div class="container text-center">
         <div class="h1">Users</div>
+
+<form action="{{env('APP_URL')}}/SEARCH" method="POST">
+  <div class="input-group custom-search-form w-75 mx-auto">
+      <input type="text" class=" form-control mb-5" name="search" placeholder="Search">
+      <span class="input-group-btn">
+          <button class="btn btn-default-sm" type="submit">
+            <i class="icon ion-md-search"></i>
+          </button>
+      </span>
+</div>
+</form>
+
+
+
         @php
             $i = 0;
             $aspas = '"';
@@ -150,8 +166,8 @@
                 echo '<div class="col">';
                 echo '  <div class="card mr-3 mb-5 d-inline-bloc float-left" style="width: 16rem;">';
                 echo '      <img class="mx-auto d-block rouded-image" src="http://lc.test/imgs/user.png" alt="User image cap">';
-                echo '      <ul class="normalize-input list-group list-group-flush clearfix">';
-                if($mode == 0 or ($id != $user->id and $mode==1)){
+                echo '      <ul class="list-group list-group-flush clearfix">';
+                if($mode == 0 or ($id != $user->id and ($mode==1 or $mode==2))){
                     echo "      <li class='list-group-item' id='name'><i class='icon ion-md-person float-left'></i>$user->name</li>";
                     echo "      <li class='list-group-item' id='email'><i class='icon ion-md-mail float-left'></i>$user->email</li>";
                     echo "      <li class='list-group-item' id='tel'><i class='icon ion-md-call float-left'></i>$user->tel</li>";
@@ -166,8 +182,8 @@
                     echo '          </div>';
                     echo '      </div>';
                 }
-                elseif($id == $user->id ){
-                    echo "<form class='normalize-input' action=$aspas$base/users/$user->id$aspas method='POST'>";
+                elseif($mode==1 and $id == $user->id ){
+                    echo "<form action=$aspas$base/users/$user->id$aspas method='POST'>";
                     echo "        $field";
                     echo '<div class="input-group mb-3 linput">';
                     echo '            <div class="input-group-prepend">';
@@ -196,6 +212,38 @@
                     echo '          </div>';
                     echo '      </div>';
                     echo '      </form>';
+                }
+                elseif($mode==2 and $id == $user->id){
+                  echo "      <li class='list-group-item' id='name'><i class='icon ion-md-person float-left'></i>$user->name</li>";
+                  echo "      <li class='list-group-item' id='email'><i class='icon ion-md-mail float-left'></i>$user->email</li>";
+                  echo "      <li class='list-group-item' id='tel'><i class='icon ion-md-call float-left'></i>$user->tel</li>";
+                  echo '      </ul>';
+                  echo '      <div class="card-body">';
+                  echo "              <form action=$aspas$base/$user->id/update$aspas method='POST'>";
+                  echo "                $field";
+                  echo '                <input type="hidden" name="_method" value="PUT">';
+                  echo '          <div class="input-group mx-auto  row">';
+                  echo '                <input type="submit" class="btn btn-danger mr-3  mx-auto" value="Edit">';
+                  echo '              </form>';
+                  echo '          </div>';
+                  echo '      </div>';
+                  if(isset($message) and $mode==2)
+                  {
+                      $class2 = $result ? 'alert alert-success  mb-0 text-dark' : 'alert alert-danger mb-0 text-dark';
+                  }
+                  else
+                  {
+                      if(!isset($message)){
+                        $message ="";
+                      }
+                      $class2 ='d-none';
+                  }
+                  echo "<div class=$aspas$class2$aspas role='alert'>";
+                  echo"   $message ";
+                  echo'    <button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+                  echo'            <span aria-hidden="true">&times;</span>';
+                  echo'          </button>';
+                  echo'</div>';
                 }
 
                 echo '  </div>';

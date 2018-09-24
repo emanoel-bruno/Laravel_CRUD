@@ -39,7 +39,6 @@ class UserController extends Controller
         try {
 
             $user = new User;
-
             $user->name = $request->input('name');
             $user->password = $request->input('password');
             $user->email = $request->input('email');
@@ -54,11 +53,13 @@ class UserController extends Controller
             $message = "Email already registred";
             $result = false;
         }
+        $users = User::all();
+        $mode=0;
         // return redirect()->back()->with(["message" => $message, "result" => $result]);
 
         //return redirect()->back()->with("message", $message)->with("result", $result);
         // return redirect()->back()->compact("message", "result");
-        return view('welcome', compact("message", "result"));
+        return view('welcome', compact("message", "mode","users","result"));
     }
 
 
@@ -94,13 +95,10 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
       try {
-
           $user = User::find($id);
-
           $user->name = $request->input('name');
           $user->email = $request->input('email');
           $user->tel = $request->input('tel');
-
           $user->save();
 
           $message = "User Modefied !";
@@ -109,11 +107,9 @@ class UserController extends Controller
           $message = "Please try again.";
           $result = false;
       }
-      // return redirect()->back()->with(["message" => $message, "result" => $result]);
-
-      //return redirect()->back()->with("message", $message)->with("result", $result);
-      // return redirect()->back()->compact("message", "result");
-      return view('welcome', compact("message", "result"));
+      $mode = 2;
+      $users = User::all();
+      return view('welcome', compact("message", "mode", "id", "users", "result"));
     }
 
     /**
