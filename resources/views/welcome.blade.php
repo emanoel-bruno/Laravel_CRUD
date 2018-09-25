@@ -136,7 +136,8 @@
     <div class="container text-center">
         <div class="h1">Users</div>
 
-<form action="{{env('APP_URL')}}/SEARCH" method="POST">
+<form action="{{env('APP_URL')}}/search" method="POST">
+  {!! csrf_field() !!}
   <div class="input-group custom-search-form w-75 mx-auto">
       <input type="text" class=" form-control mb-5" name="search" placeholder="Search">
       <span class="input-group-btn">
@@ -146,10 +147,7 @@
       </span>
 </div>
 </form>
-
-
-
-        @php
+    @php
             $i = 0;
             $aspas = '"';
             $first = true;
@@ -167,7 +165,7 @@
                 echo '  <div class="card mr-3 mb-5 d-inline-bloc float-left" style="width: 16rem;">';
                 echo '      <img class="mx-auto d-block rouded-image" src="http://lc.test/imgs/user.png" alt="User image cap">';
                 echo '      <ul class="list-group list-group-flush clearfix">';
-                if($mode == 0 or ($id != $user->id and ($mode==1 or $mode==2))){
+                if(($mode == 0 or $mode==3) or ($id != $user->id and ($mode==1 or $mode==2))) {
                     echo "      <li class='list-group-item' id='name'><i class='icon ion-md-person float-left'></i>$user->name</li>";
                     echo "      <li class='list-group-item' id='email'><i class='icon ion-md-mail float-left'></i>$user->email</li>";
                     echo "      <li class='list-group-item' id='tel'><i class='icon ion-md-call float-left'></i>$user->tel</li>";
@@ -260,6 +258,13 @@
               $i = $i + 1;
             }
 
+            if( $mode==1 or $mode==2 or $mode==3){
+              echo '<script type="text/javascript">';
+              echo 'window.onload = function() {';
+              echo 'document.getElementByClass("list-section").focus(); ';
+              echo '};';
+              echo'</script>';
+            }
         @endphp
     </div>
 </section>

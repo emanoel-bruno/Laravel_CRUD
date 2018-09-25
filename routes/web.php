@@ -29,6 +29,8 @@ Route::put('/{id}/update', function ($id) {
 	return view('welcome', compact('users','mode','id'));
 });
 
+Route::post('/search', 'UserController@search');
+
 
 Route::group(['middleware' => ['web']], function () {
     Route::resource('users', 'UserController');

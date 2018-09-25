@@ -28,6 +28,13 @@ class UserController extends Controller
         //
     }
 
+    public function search(Request $request){
+      $mode=3;
+      $value = $request->input('search');
+      $users = User::where('name','LIKE',"%{$value}%")->get();
+      return view('welcome', compact("mode","users"));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
