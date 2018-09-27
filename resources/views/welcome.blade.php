@@ -30,6 +30,7 @@
         color: #fb503b;
     }
 </style>
+
 @endsection
 
 @section('header')
@@ -132,7 +133,7 @@
     </div>
 </section>
 
-<section class="list-section" id="all">
+<section class="list-section" id="all" tabindex="0">
     <div class="container text-center">
         <div class="h1">Users</div>
 
@@ -141,7 +142,7 @@
   <div class="input-group custom-search-form w-75 mx-auto">
       <input type="text" class=" form-control mb-5" name="search" placeholder="Search">
       <span class="input-group-btn">
-          <button class="btn btn-default-sm" type="submit">
+          <button class="btn btn-default-sm btn-danger" type="submit">
             <i class="icon ion-md-search"></i>
           </button>
       </span>
@@ -153,6 +154,7 @@
             $first = true;
             $base = env('APP_URL');
             $field = csrf_field();
+            $delete_method = method_field('delete');
             foreach ($users as $user)
             {
                 if($i % 3== 0){
@@ -162,7 +164,7 @@
                     echo '<div class="row">';
                 }
                 echo '<div class="col">';
-                echo '  <div class="card mr-3 mb-5 d-inline-bloc float-left" style="width: 16rem;">';
+                echo '  <div class="card mx-auto mb-5 d-inline-block" style="width: 16rem;">';
                 echo '      <img class="mx-auto d-block rouded-image" src="http://lc.test/imgs/user.png" alt="User image cap">';
                 echo '      <ul class="list-group list-group-flush clearfix">';
                 if(($mode == 0 or $mode==3) or ($id != $user->id and ($mode==1 or $mode==2))) {
@@ -171,14 +173,21 @@
                     echo "      <li class='list-group-item' id='tel'><i class='icon ion-md-call float-left'></i>$user->tel</li>";
                     echo '      </ul>';
                     echo '      <div class="card-body">';
-                    echo "              <form action=$aspas$base/$user->id/update$aspas method='POST'>";
+                    echo '      <div class="buttons">';
+                    echo "          <form action=$aspas$base/$user->id/update$aspas method='POST'>";
                     echo "                $field";
                     echo '                <input type="hidden" name="_method" value="PUT">';
-                    echo '          <div class="input-group mx-auto  row">';
-                    echo '                <input type="submit" class="btn btn-danger mr-3  mx-auto" value="Edit">';
-                    echo '              </form>';
+                    echo '                <input type="submit" class="btn btn-danger " value="Edit">';
+                    echo '          </form>';
+                    echo "          <form action=$aspas$base/users/$user->id$aspas method='POST'>";
+                    echo "                $delete_method";
+                    echo "                $field";
+                    echo '            <div class="ml-4">';
+                    echo '                <input type="submit" class="btn btn-outline-danger" value="Delete">';
                     echo '          </div>';
+                    echo '          </form>';
                     echo '      </div>';
+                    echo ' </div>';
                 }
                 elseif($mode==1 and $id == $user->id ){
                     echo "<form action=$aspas$base/users/$user->id$aspas method='POST'>";
@@ -217,13 +226,20 @@
                   echo "      <li class='list-group-item' id='tel'><i class='icon ion-md-call float-left'></i>$user->tel</li>";
                   echo '      </ul>';
                   echo '      <div class="card-body">';
-                  echo "              <form action=$aspas$base/$user->id/update$aspas method='POST'>";
+                  echo '      <div class="buttons">';
+                  echo "          <form action=$aspas$base/$user->id/update$aspas method='POST'>";
                   echo "                $field";
                   echo '                <input type="hidden" name="_method" value="PUT">';
-                  echo '          <div class="input-group mx-auto  row">';
-                  echo '                <input type="submit" class="btn btn-danger mr-3  mx-auto" value="Edit">';
-                  echo '              </form>';
+                  echo '                <input type="submit" class="btn btn-danger " value="Edit">';
+                  echo '          </form>';
+                  echo "          <form action=$aspas$base/users/$user->id$aspas method='POST'>";
+                  echo "                $delete_method";
+                  echo "                $field";
+                  echo '            <div class="ml-4">';
+                  echo '                <input type="submit" class="btn btn-outline-danger" value="Delete">';
                   echo '          </div>';
+                  echo '          </form>';
+                  echo '      </div>';
                   echo '      </div>';
                   if(isset($message) and $mode==2)
                   {
@@ -258,10 +274,12 @@
               $i = $i + 1;
             }
 
-            if( $mode==1 or $mode==2 or $mode==3){
+            if( $mode==1 or $mode==2 or $mode==3 or isset($deleted)){
               echo '<script type="text/javascript">';
               echo 'window.onload = function() {';
-              echo 'document.getElementByClass("list-section").focus(); ';
+              echo 'console.log("oioioioio");';
+              echo 'console.log(document.getElementById("all"));';
+              echo 'document.getElementById("all").focus(); ';
               echo '};';
               echo'</script>';
             }

@@ -127,7 +127,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+      	$users = User::all();
+      	$mode = 0;
+        $deleted = true;
+      	return view('welcome', compact('users','mode','deleted'));
     }
 
     public function all()

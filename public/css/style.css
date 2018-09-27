@@ -150,3 +150,9 @@ input {
 ve-pink .fa, .active-pink-2 .fa {
     color: #fb503b;
 }
+
+.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center ;
+}
