@@ -155,6 +155,7 @@
             $base = env('APP_URL');
             $field = csrf_field();
             $delete_method = method_field('delete');
+            <?php foreach($users as $user): ?>
             foreach ($users as $user)
             {
                 if($i % 3== 0){
@@ -277,7 +278,6 @@
             if( $mode==1 or $mode==2 or $mode==3 or isset($deleted)){
               echo '<script type="text/javascript">';
               echo 'window.onload = function() {';
-              echo 'console.log("oioioioio");';
               echo 'console.log(document.getElementById("all"));';
               echo 'document.getElementById("all").focus(); ';
               echo '};';
