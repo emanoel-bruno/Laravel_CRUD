@@ -1,0 +1,31 @@
+.logo:link,
+.logo:visited {
+    background: url("{{ URL::asset('imgs/laravel-logo.png' )}}");
+    background-size: cover;
+}
+
+.logo:hover,
+.logo:active {
+    background: url("{{ URL::asset('imgs/laravelo.png' )}}");
+    background-size: cover;
+}
+
+.display-2:link,
+.display-2:visited {
+    color: #cccccc;
+
+    transition: color 0.5s;
+    -webkit-transition: color 0.5s;
+    -moz-transition: color 0.5s;
+    -ms-transition: color 0.5s;
+    -o-transition: color 0.5s;
+}
+
+.display-2:hover,
+.display-2:active {
+    color: #fb503b;
+}
+
+.input-group-text {
+    width: 38px !important; 
+}

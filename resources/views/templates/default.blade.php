@@ -16,8 +16,13 @@
     <link rel="stylesheet" href="{{ URL::asset('css/media.css')}}" type="text/css">
     <style>
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.603), rgba(0, 0, 0, 0.603)),
+            position: relative;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: left;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.603), rgba(0, 0, 0, 0.603)),
             url("{{  URL::asset("imgs/hero.jpg")}}  ");
+            
         }
     </style>
     @yield('head')
