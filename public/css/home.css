@@ -1,15 +1,3 @@
-.logo:link,
-.logo:visited {
-    background: url("{{ URL::asset('imgs/laravel-logo.png' )}}");
-    background-size: cover;
-}
-
-.logo:hover,
-.logo:active {
-    background: url("{{ URL::asset('imgs/laravelo.png' )}}");
-    background-size: cover;
-}
-
 .display-2:link,
 .display-2:visited {
     color: #cccccc;

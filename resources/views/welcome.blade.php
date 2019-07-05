@@ -2,6 +2,22 @@
 @section('title','Laravel_CRUD Welcome')
 @section('head')
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+
+<style>
+	.logo:link,
+	.logo:visited {
+		background: url("{{ asset('imgs/laravel-logo.png' )}}");
+		background-size: cover;
+	}
+
+	.logo:hover,
+	.logo:active {
+		background: url("{{ asset('imgs/laravelo.png' )}}");
+		background-size: cover;
+	}
+
+</style>
+
 @endsection
 
 @section('header')
