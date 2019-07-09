@@ -97,8 +97,8 @@ li a:active {
 }
 
 .create-section {
-  min-height: 100%;
-  min-height: 100vh;
+  min-height: 85%;
+  min-height: 85vh;
 
   display: flex;
   align-items: center;

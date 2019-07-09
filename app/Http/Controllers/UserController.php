@@ -62,10 +62,7 @@ class UserController extends Controller
         }
         $users = User::all();
         $mode=0;
-        // return redirect()->back()->with(["message" => $message, "result" => $result]);
 
-        //return redirect()->back()->with("message", $message)->with("result", $result);
-        // return redirect()->back()->compact("message", "result");
         return view('welcome', compact("message", "mode","users","result"));
     }
 
